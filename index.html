@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenpeak Training | Empower Your Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --accent-color: #00d2ff;
+            --accent-hover: #00a8cc;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            color: #0f2027;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 32, 39, 0.85), rgba(44, 83, 100, 0.85)), 
+                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: #d1d5db;
+            font-weight: 300;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn-enroll {
+            background: linear-gradient(90deg, var(--accent-color), #00a8cc);
+            color: #0f2027;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+            transition: var(--transition-smooth);
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .btn-enroll:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6);
+            background: linear-gradient(90deg, #00a8cc, var(--accent-color));
+        }
+
+        #courses {
+            background-color: var(--bg-light);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .course-card {
+            background-color: var(--text-light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-icon-box {
+            background: var(--primary-gradient);
+            padding: 40px;
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 3.5rem;
+        }
+
+        .course-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            color: #0f2027;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .course-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #edf2f7;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .course-duration {
+            color: #555;
+        }
+
+        .course-duration i {
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+
+        .course-fee {
+            color: #2e7d32;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        #about {
+            background-color: var(--text-light);
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            color: #203a43;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        #contact {
+            background-color: var(--bg-light);
+        }
+
+        .contact-wrapper {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: var(--primary-gradient);
+            color: var(--text-light);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .info-item p {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        footer {
+            background-color: #0f2027;
+            color: #d1d5db;
+            padding: 60px 10% 20px 10%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            color: #0f2027;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            section { padding: 60px 5%; }
+            .hero-title { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(15, 32, 39, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                gap: 30px;
+                transition: 0.4s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .about-container { padding: 30px 20px; }
+            .contact-info { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Zenpeak<span>Training</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-item active">Home</a></li>
+            <li><a href="#courses" class="nav-item">Courses</a></li>
+            <li><a href="#about" class="nav-item">About</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+        </ul>
+    </header>
+
+    <section id="home">
+        <h1 class="hero-title">Know more. Do more. Be more.</h1>
+        <p class="hero-subtitle">Unlock your ultimate potential. Learn industry-demanded skills from real professionals and transform your structural foundation into a modern tech career.</p>
+        <a href="#courses" class="btn-enroll">Enroll Now <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </section>
+
+    <section id="courses">
+        <h2 class="section-title">Our Featured Courses</h2>
+        <div class="courses-grid">
+            
+            <div class="course-card">
+                <div class="course-icon-box">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Beginner Course</h3>
+                    <p class="course-desc">Basic foundation training for new learners. Master modern computer configurations, terminology, and core structures.</p>
+                    <div class="course-meta">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 3 Months</span>
+                        <span class="course-fee">5,000 BDT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-icon-box">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Intermediate Course</h3>
+                    <p class="course-desc">Skill development and practical learning for intermediate students. Build independent workflows and real-world assignments.</p>
+                    <div class="course-meta">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 6 Months</span>
+                        <span class="course-fee">9,000 BDT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-icon-box">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Advanced Course</h3>
+                    <p class="course-desc">Professional-level advanced training with real-world projects. Collaborate natively on actual system architectures with active production mentorship.</p>
+                    <div class="course-meta">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 12 Months</span>
+                        <span class="course-fee">15,000 BDT</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <p class="about-text">Zenpeak Training is a modern skill development academy focused on empowering students with practical knowledge and industry-ready skills.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-wrapper">
+            
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>Uttara, Dhaka, Bangladesh</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>+880 1234 567890</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@zenpeaktraining.com</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Zenpeak Training</h4>
+                <p style="margin-top: 15px; font-size: 0.95rem;">Empowering learners across the country with cutting-edge expertise and active real-world technical skill integration.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links" style="margin-top: 15px;">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zenpeak Training. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            if(icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
